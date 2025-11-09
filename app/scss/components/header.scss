@@ -1,0 +1,12 @@
+@use "../util" as *;
+
+.header {
+  display: flex;
+  @include breakpoint(large) {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    width: 100%;
+  }
+}
