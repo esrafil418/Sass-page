@@ -1,10 +1,22 @@
 @use "../util" as *;
 
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(30);
+  @include breakpoint(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint(large) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .card {
+  position: relative;
+  overflow: hidden;
   background: var(--dark-card);
   color: var(--dark-text1);
-  width: rem(255);
-  // todo => rezise later
   text-align: center;
   padding: rem(25);
   border-radius: rem(5);
@@ -13,16 +25,36 @@
     border-top: rem(5) solid var(--facebook);
   }
   &--twitter {
+    border-top: rem(5) solid var(--twitter);
   }
   &--instagram {
+    padding-top: rem(30);
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: rem(5);
+      background: linear-gradient(
+        255deg,
+        var(--instagram-end),
+        var(--instagram-middle) 50.91%,
+        var(--instagram-start) 100%
+      );
+    }
   }
   &--youtube {
+    border-top: rem(5) solid var(--youtube);
   }
   &__platform {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: rem(20);
     margin-bottom: rem(28);
+    margin-top: rem(5);
   }
 
   &__icon {
